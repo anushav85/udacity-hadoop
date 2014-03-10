@@ -19,7 +19,7 @@ for line in sys.stdin:
 
     old_key = this_key
 
-    if this_sale > sale_highest:
+    if float(this_sale) > float(sale_highest):
         sale_highest = this_sale
 
 if old_key is not None:
