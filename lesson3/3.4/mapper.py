@@ -8,5 +8,6 @@ regex = re.compile("(?P<host>\S+) (?P<identity>\S+) (?P<username>\S+) \[(?P<time
 
 for line in sys.stdin:
     r = regex.search(line)
-    res = r.groupdict()
-    print(res[u'request'])
+    if r is not None:
+        res = r.groupdict()
+        print(res[u'request'])
