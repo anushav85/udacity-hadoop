@@ -3,9 +3,11 @@
 import sys
 import re
 
-regex = re.compile('"GET (.*) HTTP/1.0"')
+regex = re.compile("(?P<host>\S+) (?P<identity>\S+) (?P<username>\S+) \[(?P<time>.+)\] \"(?P<method>.+) (?P<request>.+) (?P<protocol>.+)\" (?P<status>[0-9]+) (?P<size>\S+)")
 
+ 
 for line in sys.stdin:
-    res = regex.findall(line)
-    if len(res) > 0:
-        print("{0}\t1".format(res))
+    r = regex.search(line)
+    res = r.groupdict()
+    print(res[u'request'])
+
